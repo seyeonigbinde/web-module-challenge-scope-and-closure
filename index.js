@@ -51,7 +51,12 @@ let count = 0;
 function counter2() {
   return count++;
 }
+//Task 1 Answers:
+// 1. Counter 1 is  local scoped while counter2 is globally scoped.
 
+//2. counter1 uses closure as function counter() was created inside function counterMaker.
+
+//3. counter1 is used when you are write many functions within the parent function. counter2 is for global scoping.
 
 /* ⚾️⚾️⚾️ Task 2: inning() ⚾️⚾️⚾️
 Use the inning function below to do the following:
@@ -62,9 +67,12 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(randomNum){
+  return Math.floor(Math.random() * Math.floor(3));
 }
+
+console.log(inning(3));
+
 
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
@@ -81,17 +89,24 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(inningCb, numInnings){
+  let homeScore = 0
+  let awayScore = 0
+  for (let i=0; i<numInnings; i++){
+    homeScore =  homeScore + inningCb();
+    awayScore = awayScore + inningCb();
+  }
+  return {Home: homeScore, Away: awayScore};
 }
+console.log (finalScore(inning, 9));
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(inningCb) {
+ return {Home: homeScore, Away: awayScore};
 }
 
 
