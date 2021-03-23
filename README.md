@@ -9,7 +9,12 @@ The module challenge is the afternoon project or assignment that students work t
 ## Objectives
 
 - Explain function scope
-- Describe what closure is, how closure is created in a program and why it is important to understand closures in JavaScript  
+
+Function scope allows us to create variables inside of functions, that are essentially private to that function.
+
+- Describe what closure is, how closure is created in a program and why it is important to understand closures in JavaScript 
+
+Closure is a function within another function. It is the combination of a function and the private environment within which that function was declared. closures give us the ability to put functions together. when a function is created in another function (or nested within another function) then we have a parent function and a child function.
 
 ## Introduction
 

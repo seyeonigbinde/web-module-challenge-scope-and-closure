@@ -71,7 +71,7 @@ function inning(randomNum){
   return Math.floor(Math.random() * Math.floor(3));
 }
 
-console.log(inning(3));
+console.log(`task 2:`, inning(3));
 
 
 
@@ -98,17 +98,23 @@ function finalScore(inningCb, numInnings){
   }
   return {Home: homeScore, Away: awayScore};
 }
-console.log (finalScore(inning, 9));
+console.log (`task 3:`, finalScore(inning, 9));
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(inningCb) {
- return {Home: homeScore, Away: awayScore};
-}
+function getInningScore(inningScoreCb) {
+  let homeScore = 0
+  let awayScore = 0
 
+    homeScore =  homeScore + inningScoreCb();
+    awayScore = awayScore + inningScoreCb();
+  
+  return {Home: homeScore, Away: awayScore};
+}
+console.log (`task 4:`, getInningScore(inning));
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
@@ -151,10 +157,28 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
-}
+function scoreboard(inningScoreCb, inningCb, num) {
+  const newArray =[]
+  let homeScore = 0
+  let awayScore = 0
+  for (let i=0; i<num; i++){
+    const currentInning = inningScoreCb(inningCb)
+    homeScore =  homeScore + currentInning.Home
+    awayScore = awayScore + currentInning.Away
+    newArray.push(`Inning ${i+1}: Away ${currentInning.Away} - Home ${currentInning.Home}`)
+  }
+  if (homeScore === awayScore) {
+    newArray.push(`This game will require extra innings: Away ${awayScore} - Home ${homeScore}`);
+  }
+  else if (homeScore !== awayScore) {
+    newArray.push(`Final Score: Away ${awayScore} - Home ${homeScore}`);
+  }
+  
+  return newArray;
+  }
 
+
+console.log (`task 5:`, scoreboard(getInningScore,inning, 9));
 
 
 
